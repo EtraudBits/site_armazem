@@ -1,0 +1,18 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Cimento CP-II 50kg",
+      "preco": 45.9,
+      "estoque": 100,
+      "imagem": "/assets/cimento.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Tinta Acrílica 18L Azul",
+      "preco": 189.0,
+      "estoque": 50,
+      "imagem": "/assets/tinta-azul.jpg"
+    }
+  ]
+}

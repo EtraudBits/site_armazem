@@ -10,48 +10,76 @@ export default function Carrinho() {
 
   if (itens.length === 0)
     return (
-      <p className="text-center text-neutral text-lg">
-        Seu carrinho está vazio.
-      </p>
+      <div className="text-center py-20">
+        <div className="text-8xl mb-6">🛒</div>
+        <h2 className="text-3xl font-bold text-white mb-4">
+          Seu carrinho está vazio
+        </h2>
+        <p className="text-lg text-gray-300 mb-8">
+          Adicione produtos para começar suas compras!
+        </p>
+        <a
+          href="/produtos"
+          className="inline-block bg-gradient-to-r from-secondary-700 to-secondary-900 text-white px-8 py-4 rounded-lg font-bold hover:from-secondary-800 hover:to-secondary-950 transform hover:scale-105 transition-all shadow-lg"
+        >
+          📦 Ver Produtos
+        </a>
+      </div>
     );
 
   return (
-    <section className="space-y-6">
-      <h1 className="text-3xl font-bold text-primary">Carrinho de Compras</h1>
+    <section className="space-y-8">
+      <div className="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 -mx-6 px-6 py-8 rounded-xl border-2 border-secondary-500 shadow-lg">
+        <h1 className="text-4xl font-bold text-white mb-3">
+          🛒 Carrinho de Compras
+        </h1>
+        <p className="text-lg text-gray-300">
+          {itens.length} {itens.length === 1 ? "item" : "itens"} no seu carrinho
+        </p>
+      </div>
 
-      <div className="bg-white shadow rounded-md overflow-hidden">
+      <div className="bg-gray-800 shadow-xl rounded-xl overflow-hidden border-2 border-gray-700">
         <table className="w-full text-left border-collapse">
-          <thead className="bg-gray-100">
+          <thead className="bg-gradient-to-r from-secondary-700 to-secondary-900 text-white">
             <tr>
-              <th className="p-3">Produto</th>
-              <th className="p-3">Preço</th>
-              <th className="p-3">Quantidade</th>
-              <th className="p-3">Subtotal</th>
-              <th className="p-3">Ações</th>
+              <th className="p-4 font-bold">Produto</th>
+              <th className="p-4 font-bold">Preço</th>
+              <th className="p-4 font-bold">Quantidade</th>
+              <th className="p-4 font-bold">Subtotal</th>
+              <th className="p-4 font-bold">Ações</th>
             </tr>
           </thead>
           <tbody>
-            {itens.map((item) => (
-              <tr key={item.id} className="border-t">
-                <td className="p-3 flex items-center gap-3">
+            {itens.map((item, index) => (
+              <tr
+                key={item.id}
+                className={index % 2 === 0 ? "bg-gray-700" : "bg-gray-600"}
+              >
+                <td className="p-4 flex items-center gap-4">
                   <img
                     src={item.imagem}
                     alt={item.nome}
-                    className="w-16 h-16 object-cover rounded"
+                    className="w-20 h-20 object-cover rounded-lg shadow-md"
                   />
-                  <span>{item.nome}</span>
+                  <span className="font-semibold text-white">{item.nome}</span>
                 </td>
-                <td className="p-3">R$ {item.preco.toFixed(2)}</td>
-                <td className="p-3">{item.quantidade}</td>
-                <td className="p-3 font-semibold">
+                <td className="p-4 text-gray-300 font-semibold">
+                  R$ {item.preco.toFixed(2)}
+                </td>
+                <td className="p-4">
+                  <span className="bg-secondary-700 text-white px-4 py-2 rounded-full font-bold">
+                    {item.quantidade}x
+                  </span>
+                </td>
+                <td className="p-4 font-bold text-lg text-yellow-400">
                   R$ {(item.preco * item.quantidade).toFixed(2)}
                 </td>
-                <td className="p-3">
+                <td className="p-4">
                   <button
                     onClick={() => remover(item.id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                    className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transform hover:scale-105 transition-all font-semibold shadow-md"
                   >
-                    Remover
+                    🗑️ Remover
                   </button>
                 </td>
               </tr>
@@ -60,24 +88,27 @@ export default function Carrinho() {
         </table>
       </div>
 
-      <div className="flex justify-between items-center mt-4">
-        <button
-          onClick={limpar}
-          className="bg-gray-300 text-neutral px-4 py-2 rounded hover:bg-gray-400 transition"
-        >
-          Limpar Carrinho
-        </button>
-
-        <div className="text-right">
-          <p className="text-xl font-bold text-neutral">
-            Total: <span className="text-primary">R$ {total.toFixed(2)}</span>
-          </p>
+      <div className="bg-gray-800 p-8 rounded-xl shadow-xl border-2 border-gray-700">
+        <div className="flex justify-between items-center">
           <button
-            onClick={() => alert("Pedido finalizado com sucesso!")}
-            className="mt-2 bg-secondary text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+            onClick={limpar}
+            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition font-semibold"
           >
-            Finalizar Compra
+            🗑️ Limpar Carrinho
           </button>
+
+          <div className="text-right">
+            <p className="text-sm text-gray-300 mb-2">Total do Pedido:</p>
+            <p className="text-4xl font-bold text-white mb-4">
+              <span className="text-yellow-400">R$ {total.toFixed(2)}</span>
+            </p>
+            <button
+              onClick={() => alert("Pedido finalizado com sucesso! 🎉")}
+              className="bg-gradient-to-r from-primary to-primary-light text-white px-10 py-4 rounded-lg font-bold text-lg hover:from-primary-dark hover:to-primary transform hover:scale-105 transition-all shadow-lg"
+            >
+              ✓ Finalizar Compra
+            </button>
+          </div>
         </div>
       </div>
     </section>

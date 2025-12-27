@@ -4,9 +4,53 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#F97316", // Laranja
-        secondary: "#2563EB", // Azul
-        neutral: "#6B7280", // Cinza
+        primary: {
+          DEFAULT: "#FF6B00",
+          light: "#FF9147",
+          dark: "#D95C00",
+          50: "#FFF5EB",
+          100: "#FFE8CC",
+          200: "#FFD499",
+          300: "#FFB966",
+          400: "#FF9147",
+          500: "#FF6B00",
+          600: "#E66000",
+          700: "#CC5500",
+          800: "#994000",
+          900: "#662B00",
+        },
+        secondary: {
+          DEFAULT: "#1E40AF",
+          light: "#3B82F6",
+          dark: "#1E3A8A",
+          50: "#EFF6FF",
+          100: "#DBEAFE",
+          500: "#3B82F6",
+          600: "#2563EB",
+          700: "#1D4ED8",
+          800: "#1E40AF",
+          900: "#1E3A8A",
+        },
+        neutral: {
+          DEFAULT: "#6B7280",
+          light: "#F3F4F6",
+          dark: "#374151",
+          50: "#F9FAFB",
+          100: "#F3F4F6",
+          200: "#E5E7EB",
+          300: "#D1D5DB",
+          400: "#9CA3AF",
+          500: "#6B7280",
+          600: "#4B5563",
+          700: "#374151",
+          800: "#1F2937",
+          900: "#111827",
+        },
+        accent: {
+          yellow: "#F59E0B",
+          green: "#10B981",
+          red: "#EF4444",
+        },
       },
     },
   },
